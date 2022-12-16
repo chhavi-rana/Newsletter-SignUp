@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require("body-parser")
 const https = require('https');
 const mailchimp = require("@mailchimp/mailchimp_marketing");
+require('dotenv').config()
 
 const app = express();
 
@@ -48,7 +49,7 @@ app.post("/", function(req, res){
 
     const options = {
         method: "POST",
-        auth: "chhavi:79f5c53589dbad42166f3429e06be648-us21"
+        auth: "chhavi:" + process.env.API_KEY +""
     }
 
     const request = https.request(url, options, function(response){
